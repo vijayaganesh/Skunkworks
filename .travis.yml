@@ -1,0 +1,12 @@
+dist: xenial
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6 
+
+script:
+  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake .
+  - cmake --build .
