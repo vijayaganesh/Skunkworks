@@ -1,12 +1,15 @@
 dist: xenial
+language: cpp
 
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-6 
+      - g++-7 
 
 script:
-  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake .
+  - export CC=gcc-7
+  - export CXX=g++-7
+  - cmake .
   - cmake --build .
