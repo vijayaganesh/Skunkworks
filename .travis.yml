@@ -9,8 +9,15 @@ addons:
     packages:
       - g++-7 
 
+before_install:
+  - pip install --user cpp-coveralls
+
 script:
   - export CC=gcc-7
   - export CXX=g++-7
-  - cmake .
+  - cmake DCOVERAGE=1 .
   - cmake --build .
+  - ./tests
+
+  after_success:
+  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
